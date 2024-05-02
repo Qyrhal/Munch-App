@@ -1,4 +1,4 @@
-# MonFood App
+# The Munch Food App
 An on-campus uni food review app
 
 # Frameworks
