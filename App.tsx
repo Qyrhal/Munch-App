@@ -6,7 +6,7 @@ export default function App() {
     // Main Viewing Container
     <View style={styles.container}> 
       <Text style={styles.header}>Yo Yo</Text>
-      <Text>Avi is a babe</Text>
+      <Text>Parth is too good</Text>
       <StatusBar style="auto" />
     </View>
   );
