@@ -11,9 +11,9 @@ interface props {
 
 const Card = ({ name, price, description, image }: props) => {
   return (
-    <View className='m-3 rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'>
+    <View className='m-3 w-60 rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'>
+      <Picture url={image} />
       <View className='p-5'>
-        <Picture url={image} />
         <Text className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
           {name}
         </Text>
