@@ -4,6 +4,10 @@ An on-campus uni food review app
 # Collab notes
 Please try to keep main branch as a "production" branch so there are no unstable changes to it. Keep the unstable changes in dev which then we merge into Main.
 
+#Installation
+
+`npm i`
+
 # Frameworks
 ```
 App Creation:
