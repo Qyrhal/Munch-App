@@ -1,17 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, Text, View } from 'react-native';
-import { useState } from 'react';
-import Dash from './app/Components/Dash';
-import Card from './app/Components/Card';
-import Card2 from './app/Components/Card2';
-import Button from './app/Components/Button';
-import SearchBar from './app/Components/SearchBar';
-import HorizontalStack from './app/Components/HorizontalStack';
-import Navbar from './app/Components/Navbar';
-import 'tailwindcss/tailwind.css';
+import { StatusBar } from 'expo-status-bar'
+import { ScrollView, Text, View } from 'react-native'
+import { useState } from 'react'
+import Dash from './app/Components/Dash'
+import Card from './app/Components/Card'
+// import { Card2, SearchBar } from './app/Components/index'
+import Card2 from './app/Components/Card2'
+import SearchBar from './app/Components/SearchBar'
+import Button from './app/Components/Button'
+import HorizontalStack from './app/Components/HorizontalStack'
+import Navbar from './app/Components/Navbar'
+import { NativeWindStyleSheet } from 'nativewind'
 
 export default function App() {
-  const [activeSearch, setActiveSearch] = useState(false);
+  const [ActiveSearch, setActiveSearch] = useState(false)
 
   const data = [
     {
@@ -35,24 +36,24 @@ export default function App() {
       image:
         'https://tb-static.uber.com/prod/image-proc/processed_images/8fe82646a8a3f13b36e996a83752c618/97e6648b3593c29cb4a6335f976e6d84.jpeg',
     },
-  ];
+  ]
 
   return (
     // Main Viewing Container
     <View>
-      <View style={{ paddingVertical: 16 }}></View>
+      <View className='py-4'></View>
       <SearchBar
         onPressIn={() => setActiveSearch(true)}
         onBlur={() => setActiveSearch(false)}
       />
-      <Text style={{ marginBottom: 16, marginHorizontal: 12, fontSize: 24, fontWeight: 'bold', color: '#333' }}>
+      <Text className='mb-4 m-3 text-4xl font-extrabold tracking-tight text-gray-900 flex flex-col'>
         Good Afternoon{' '}
-        <View style={{ backgroundColor: '#3498db', borderRadius: 4, paddingHorizontal: 8 }}>
-          <Text style={{ color: '#fff', fontSize: 24 }}>Avi</Text>
+        <View className='bg-blue-500 rounded px-4'>
+          <Text className=' text-white text-4xl'>Avi</Text>
         </View>
       </Text>
-      {!activeSearch ? (
-        <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+      {!ActiveSearch ? (
+        <ScrollView className='overflow-scroll h-full'>
           <HorizontalStack data={data} />
           {/* <HorizontalStack />
           <HorizontalStack />
@@ -68,5 +69,9 @@ export default function App() {
         <Text>search query</Text>
       )}
     </View>
-  );
+  )
 }
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+})

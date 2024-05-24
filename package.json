@@ -1,6 +1,6 @@
 {
-  "name": "munch",
-  "version": "1.0.1",
+  "name": "monfood",
+  "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -10,19 +10,21 @@
   },
   "dependencies": {
     "@types/react-native-vector-icons": "^6.4.18",
-    "expo": "^51.0.5",
-    "expo-status-bar": "^1.12.1",
+    "expo": "51.0.6",
+    "expo-status-bar": "1.12.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-icons": "^5.2.1",
-    "react-native": "^0.74.1",
-    "react-native-vector-icons": "^10.1.0"
+    "react-native": "0.74.1",
+    "react-native-vector-icons": "^10.1.0",
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "typescript": "5.4.5",
+    "tailwindcss": "3.3.2",
+    "nativewind": "^2.0.11"
   },
   "private": true
 }
