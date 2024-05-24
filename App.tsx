@@ -49,7 +49,7 @@ export default function App() {
       <Text className='mb-4 m-3 text-4xl font-extrabold tracking-tight text-gray-900 flex flex-col'>
         Good Afternoon{' '}
         <View className='bg-blue-500 rounded px-4'>
-          <Text className=' text-white text-4xl'>Avi</Text>
+          <Text className=' text-white text-4xl'>Midhun</Text>
         </View>
       </Text>
       {!ActiveSearch ? (
