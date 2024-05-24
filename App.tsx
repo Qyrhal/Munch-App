@@ -3,11 +3,13 @@ import { ScrollView, Text, View } from 'react-native'
 import { useState } from 'react'
 import Dash from './app/Components/Dash'
 import Card from './app/Components/Card'
+// import { Card2, SearchBar } from './app/Components/index'
 import Card2 from './app/Components/Card2'
-import Button from './app/Components/Button'
 import SearchBar from './app/Components/SearchBar'
+import Button from './app/Components/Button'
 import HorizontalStack from './app/Components/HorizontalStack'
 import Navbar from './app/Components/Navbar'
+import { NativeWindStyleSheet } from 'nativewind'
 
 export default function App() {
   const [ActiveSearch, setActiveSearch] = useState(false)
@@ -69,3 +71,7 @@ export default function App() {
     </View>
   )
 }
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+})
