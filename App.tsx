@@ -1,18 +1,19 @@
+import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ScrollView, Text, View } from 'react-native'
-import { useState } from 'react'
-import Dash from './app/Components/Dash'
-import Card from './app/Components/Card'
-// import { Card2, SearchBar } from './app/Components/index'
-import Card2 from './app/Components/Card2'
-import SearchBar from './app/Components/SearchBar'
-import Button from './app/Components/Button'
-import HorizontalStack from './app/Components/HorizontalStack'
-import BottomNavBar from './app/Components/Navbar'
 import { NativeWindStyleSheet } from 'nativewind'
+import {
+  Card,
+  Card2,
+  Dash,
+  SearchBar,
+  Button,
+  HorizontalStack,
+  Navbar,
+} from './app/Components'
 
 export default function App() {
-  const [ActiveSearch, setActiveSearch] = useState(false) 
+  const [ActiveSearch, setActiveSearch] = useState(false)
 
   const data = [
     {
@@ -52,7 +53,7 @@ export default function App() {
           <Text className=' text-white text-4xl'>Midhun</Text>
         </View>
       </Text>
-      <BottomNavBar/>
+      <Navbar />
       {!ActiveSearch ? (
         <ScrollView className='overflow-scroll h-full'>
           <HorizontalStack data={data} />

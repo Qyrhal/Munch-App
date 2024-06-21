@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-const BottomNavBar = () => {
+const Navbar = () => {
   return (
     <View style={styles.navbar}>
       <Text>Home</Text>
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default BottomNavBar
+export default Navbar
