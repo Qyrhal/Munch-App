@@ -8,11 +8,11 @@ import Card2 from './app/Components/Card2'
 import SearchBar from './app/Components/SearchBar'
 import Button from './app/Components/Button'
 import HorizontalStack from './app/Components/HorizontalStack'
-import Navbar from './app/Components/Navbar'
+import BottomNavBar from './app/Components/Navbar'
 import { NativeWindStyleSheet } from 'nativewind'
 
 export default function App() {
-  const [ActiveSearch, setActiveSearch] = useState(false)
+  const [ActiveSearch, setActiveSearch] = useState(false) 
 
   const data = [
     {
@@ -52,6 +52,7 @@ export default function App() {
           <Text className=' text-white text-4xl'>Midhun</Text>
         </View>
       </Text>
+      <BottomNavBar/>
       {!ActiveSearch ? (
         <ScrollView className='overflow-scroll h-full'>
           <HorizontalStack data={data} />
