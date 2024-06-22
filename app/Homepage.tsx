@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ScrollView, Text, View } from 'react-native'
-import { NativeWindStyleSheet } from 'nativewind'
 import {
   Card,
   Card2,
@@ -11,7 +10,7 @@ import {
   Button,
   HorizontalStack,
   Navbar,
-} from '../Components/'
+} from '../Components'
 
 const Homepage = () => {
   const [ActiveSearch, setActiveSearch] = useState(false)
