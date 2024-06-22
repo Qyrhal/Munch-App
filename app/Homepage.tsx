@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ScrollView, Text, View, Pressable } from 'react-native'
+import BottomSheet from '@gorhom/bottom-sheet'
+import CustomBottomSheet from '../Components/CustomBottomSheet'
+import { useDishStore } from '../Components/Context/ItemState'
 import {
   Card,
   Card2,
@@ -11,9 +14,9 @@ import {
   HorizontalStack,
   Navbar,
 } from '../Components'
-import BottomSheet from '@gorhom/bottom-sheet'
 
 const Homepage = () => {
+  const { title, setTitle } = useDishStore()
   const [ActiveSearch, setActiveSearch] = useState(false)
 
   const data = [
@@ -39,12 +42,13 @@ const Homepage = () => {
         'https://tb-static.uber.com/prod/image-proc/processed_images/8fe82646a8a3f13b36e996a83752c618/97e6648b3593c29cb4a6335f976e6d84.jpeg',
     },
   ]
-  // Bottom Sheet
-  const snapPoints = ['30%', '50%', '75%', '100%']
+
+  // bottom sheet
+
   const bottomSheetRef = React.useRef<BottomSheet>(null)
 
-  // make a bottomsheet opener function
-  const openBottomSheet = () => {
+  const openBottomSheet = (name: string) => {
+    setTitle(name)
     bottomSheetRef.current?.snapToIndex(2)
   }
 
@@ -69,28 +73,26 @@ const Homepage = () => {
           {/* <HorizontalStack />
             <HorizontalStack />
             <Navbar /> */}
-          <Pressable onPress={openBottomSheet}>
-            <Card2
-              name='1/2 Chicken'
-              group={['spicy', 'grilled', 'chicken', 'half']}
-              price='29.00'
-              image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
-            />
-          </Pressable>
+
+          <Card2
+            name='1/2 Chicken'
+            onPressHandle={openBottomSheet}
+            group={['spicy', 'grilled', 'chicken', 'half']}
+            price='29.00'
+            image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
+          />
+          <Card2
+            name='1/5 Chicken'
+            onPressHandle={openBottomSheet}
+            group={['spicy', 'grilled', 'chicken', 'half']}
+            price='29.00'
+            image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
+          />
         </ScrollView>
       ) : (
         <Text>search query</Text>
       )}
-      <BottomSheet
-        index={1}
-        ref={bottomSheetRef}
-        snapPoints={snapPoints}
-        enablePanDownToClose={true}
-      >
-        <View>
-          <Text>This is cool</Text>
-        </View>
-      </BottomSheet>
+      <CustomBottomSheet ref={bottomSheetRef} title={title} />
     </View>
   )
 }
