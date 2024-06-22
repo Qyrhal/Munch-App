@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View, Pressable } from 'react-native'
 import {
   Card,
   Card2,
@@ -11,6 +11,7 @@ import {
   HorizontalStack,
   Navbar,
 } from '../Components'
+import BottomSheet from '@gorhom/bottom-sheet'
 
 const Homepage = () => {
   const [ActiveSearch, setActiveSearch] = useState(false)
@@ -38,6 +39,14 @@ const Homepage = () => {
         'https://tb-static.uber.com/prod/image-proc/processed_images/8fe82646a8a3f13b36e996a83752c618/97e6648b3593c29cb4a6335f976e6d84.jpeg',
     },
   ]
+  // Bottom Sheet
+  const snapPoints = ['30%', '50%', '75%', '100%']
+  const bottomSheetRef = React.useRef<BottomSheet>(null)
+
+  // make a bottomsheet opener function
+  const openBottomSheet = () => {
+    bottomSheetRef.current?.snapToIndex(2)
+  }
 
   return (
     // Main Viewing Container
@@ -60,16 +69,28 @@ const Homepage = () => {
           {/* <HorizontalStack />
             <HorizontalStack />
             <Navbar /> */}
-          <Card2
-            name='1/2 Chicken'
-            group={['spicy', 'grilled', 'chicken', 'half']}
-            price='29.00'
-            image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
-          />
+          <Pressable onPress={openBottomSheet}>
+            <Card2
+              name='1/2 Chicken'
+              group={['spicy', 'grilled', 'chicken', 'half']}
+              price='29.00'
+              image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
+            />
+          </Pressable>
         </ScrollView>
       ) : (
         <Text>search query</Text>
       )}
+      <BottomSheet
+        index={1}
+        ref={bottomSheetRef}
+        snapPoints={snapPoints}
+        enablePanDownToClose={true}
+      >
+        <View>
+          <Text>This is cool</Text>
+        </View>
+      </BottomSheet>
     </View>
   )
 }
