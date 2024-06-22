@@ -47,7 +47,8 @@ const Homepage = () => {
 
   const bottomSheetRef = React.useRef<BottomSheet>(null)
 
-  const openBottomSheet = (name: string) => {
+  const openBottomSheet = (props: any) => {
+    const { name, price, group, image } = props
     setTitle(name)
     bottomSheetRef.current?.snapToIndex(2)
   }

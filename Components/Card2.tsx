@@ -10,33 +10,28 @@ interface Props {
   group: Array<string> //limit group size to 4
   price: string
   image: string
-  onPressHandle: (
-    name: string,
-    group: Array<string>,
-    price: string,
-    image: string
-  ) => void
+  onPressHandle: (props: Props) => void
 }
 
-const Card2 = ({ name, group, price, image, onPressHandle }: Props) => {
+const Card2 = (props: Props) => {
   const { setTitle } = useDishStore()
-
+  const { onPressHandle } = props
   return (
-    <Pressable onPress={() => onPressHandle(name, group, price, image)}>
+    <Pressable onPress={() => onPressHandle(props)}>
       <View className='m-3 rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'>
-        <Picture url={image} />
+        <Picture url={props.image} />
         <View className='p-5'>
           <Text className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-            {name}
+            {props.name}
           </Text>
           <View className='flex flex-row space-x-2'>
             <Text className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-              {group.map((item: string, i) => (
+              {props.group.map((item: string, i) => (
                 <Tag text={item} key={i} />
               ))}
             </Text>
             <Text>•</Text>
-            <Text>${price}</Text>
+            <Text>${props.price}</Text>
           </View>
           <Button title='Order' onPress={() => console.log(`Order ${name}`)} />
         </View>
