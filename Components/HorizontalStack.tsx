@@ -11,12 +11,13 @@ const HorizontalStack = ({ data }: Props) => {
   return (
     <ScrollView horizontal={true}>
       <View className='flex-1 flex-row items-center justify-center bg-white'>
-        {data.map((item: string) => (
+        {data.map((item: any, i) => (
           <Card
             name={item.name}
             description={item.description}
             price={item.price}
             image={item.image}
+            key={i}
           />
         ))}
 

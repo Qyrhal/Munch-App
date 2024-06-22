@@ -21,8 +21,8 @@ const Card2 = ({ name, group, price, image }: Props) => {
         </Text>
         <View className='flex flex-row space-x-2'>
           <Text className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-            {group.map((item: string) => (
-              <Tag text={item} />
+            {group.map((item: string, i) => (
+              <Tag text={item} key={i} />
             ))}
           </Text>
           <Text>•</Text>
