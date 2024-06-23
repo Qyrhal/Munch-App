@@ -4,12 +4,14 @@ import { View, Image, StyleSheet } from 'react-native'
 
 interface props {
   url: any
+  styles?: any
 }
 
-const Picture = ({ url }: props) => {
+const Picture = ({ url, styles }: props) => {
   return (
     <View>
       <Image
+        style={styles}
         className='rounded-lg rounded-bl-none rounded-br-none mb-2 w-full h-40'
         source={{ uri: url }}
       />

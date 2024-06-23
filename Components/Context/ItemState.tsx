@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
 interface dishState {
-  title: string
-  setTitle: (title: string) => void
+  Dish: any
+  setDish: (Dish: any) => void
 }
 
 export const useDishStore = create<dishState>()((set) => ({
-  title: 'null title',
-  setTitle: (title: string) => set({ title }),
+  Dish: 'null title',
+  setDish: (Dish: any) => set({ Dish }),
 }))

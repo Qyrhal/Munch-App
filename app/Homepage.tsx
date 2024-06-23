@@ -16,7 +16,7 @@ import {
 } from '../Components'
 
 const Homepage = () => {
-  const { title, setTitle } = useDishStore()
+  const { Dish, setDish } = useDishStore()
   const [ActiveSearch, setActiveSearch] = useState(false)
 
   const data = [
@@ -49,13 +49,13 @@ const Homepage = () => {
 
   const openBottomSheet = (props: any) => {
     const { name, price, group, image } = props
-    setTitle(name)
+    setDish(props)
     bottomSheetRef.current?.snapToIndex(2)
   }
 
   return (
     // Main Viewing Container
-    <View>
+    <View className='h-full'>
       <View className='py-4'></View>
       <SearchBar
         onPressIn={() => setActiveSearch(true)}
@@ -67,7 +67,7 @@ const Homepage = () => {
           <Text className=' text-white text-4xl'>Midhun</Text>
         </View>
       </Text>
-      <Navbar />
+
       {!ActiveSearch ? (
         <ScrollView className='overflow-scroll h-full'>
           <HorizontalStack data={data} />
@@ -83,17 +83,22 @@ const Homepage = () => {
             image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
           />
           <Card2
-            name='1/5 Chicken'
+            name='Potentially Wings'
             onPressHandle={openBottomSheet}
-            group={['spicy', 'grilled', 'chicken', 'half']}
-            price='29.00'
-            image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
+            group={['chicken', 'wings']}
+            price='15.00'
+            image='https://images.eatthismuch.com/img/174344_Venomfit681_aa763474-afa8-4954-9dbf-29884b2b0076.jpg'
           />
         </ScrollView>
       ) : (
         <Text>search query</Text>
       )}
-      <CustomBottomSheet ref={bottomSheetRef} title={title} />
+      <CustomBottomSheet
+        ref={bottomSheetRef}
+        title={Dish.name}
+        image={Dish.image}
+        price={Dish.price}
+      />
     </View>
   )
 }
