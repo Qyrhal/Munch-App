@@ -61,15 +61,15 @@ const Homepage = () => {
         onPressIn={() => setActiveSearch(true)}
         onBlur={() => setActiveSearch(false)}
       />
-      <Text className='mb-4 m-3 text-4xl font-extrabold tracking-tight text-gray-900 flex flex-col'>
-        Good Afternoon{' '}
-        <View className='bg-blue-500 rounded px-4'>
-          <Text className=' text-white text-4xl'>Midhun</Text>
-        </View>
-      </Text>
 
       {!ActiveSearch ? (
         <ScrollView className='overflow-scroll h-full'>
+          <Text className='mb-4 m-3 text-4xl font-extrabold tracking-tight text-gray-900 flex flex-col'>
+            Good Afternoon{' '}
+            <View className='bg-blue-500 rounded px-4'>
+              <Text className=' text-white text-4xl'>Midhun</Text>
+            </View>
+          </Text>
           <HorizontalStack data={data} />
           {/* <HorizontalStack />
             <HorizontalStack />
@@ -79,26 +79,28 @@ const Homepage = () => {
             name='1/2 Chicken'
             onPressHandle={openBottomSheet}
             group={['spicy', 'grilled', 'chicken', 'half']}
-            price='29.00'
+            price={29.99}
             image='https://foodiesterminal.com/wp-content/uploads/2019/08/just-like-nandos-peri-peri-chicken.jpg'
           />
           <Card2
             name='Potentially Wings'
             onPressHandle={openBottomSheet}
             group={['chicken', 'wings']}
-            price='15.00'
+            price={15.99}
             image='https://images.eatthismuch.com/img/174344_Venomfit681_aa763474-afa8-4954-9dbf-29884b2b0076.jpg'
           />
         </ScrollView>
       ) : (
         <Text>search query</Text>
       )}
-      <CustomBottomSheet
-        ref={bottomSheetRef}
-        title={Dish.name}
-        image={Dish.image}
-        price={Dish.price}
-      />
+      {Dish ? (
+        <CustomBottomSheet
+          ref={bottomSheetRef}
+          title={Dish.name}
+          image={Dish.image}
+          price={Dish.price}
+        />
+      ) : null}
     </View>
   )
 }

@@ -5,16 +5,19 @@ import {
   Image,
   View,
   useWindowDimensions,
+  TextInput,
 } from 'react-native'
 
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import React, { useCallback, forwardRef } from 'react'
+import { useQuanityStore } from './Context/ItemState'
+import QuanitySelect from './QuanitySelect'
 export type Ref = BottomSheet
 
 interface Props {
   title: string
   image: string
-  price: string
+  price: number
 }
 
 const CustomBottomSheet = forwardRef<Ref, Props>((props, ref) => {
@@ -36,6 +39,9 @@ const CustomBottomSheet = forwardRef<Ref, Props>((props, ref) => {
     []
   )
   const { width } = useWindowDimensions()
+
+  const { Quanity } = useQuanityStore()
+
   return (
     <BottomSheet
       index={1}
@@ -53,7 +59,12 @@ const CustomBottomSheet = forwardRef<Ref, Props>((props, ref) => {
           />
         </View>
         <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.text}>${props.price}</Text>
+        <View className='pb-5'>
+          <Text style={styles.text}>${props.price * Quanity}</Text>
+        </View>
+        {/* Input Number */}
+        <QuanitySelect />
+        {/* End Input Number */}
         <Pressable onPress={() => console.log('PRESS')}>
           <View style={[styles.button, { width: width * 0.9 }]}>
             <Text style={styles.textButton}>Add to Cart</Text>

@@ -5,7 +5,17 @@ interface dishState {
   setDish: (Dish: any) => void
 }
 
+interface quanityState {
+  Quanity: number
+  setQuanity: (Quanity: number) => void
+}
+
 export const useDishStore = create<dishState>()((set) => ({
-  Dish: 'null title',
+  Dish: null,
   setDish: (Dish: any) => set({ Dish }),
+}))
+
+export const useQuanityStore = create<quanityState>()((set) => ({
+  Quanity: 1,
+  setQuanity: (Quanity: number) => set({ Quanity }),
 }))

@@ -8,13 +8,12 @@ import { useDishStore } from './Context/ItemState'
 interface Props {
   name: string
   group: Array<string> //limit group size to 4
-  price: string
+  price: number
   image: string
   onPressHandle: (props: Props) => void
 }
 
 const Card2 = (props: Props) => {
-  const { setTitle } = useDishStore()
   const { onPressHandle } = props
   return (
     <Pressable onPress={() => onPressHandle(props)}>
